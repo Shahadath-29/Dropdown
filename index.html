@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop down</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+    <div class="search-container">
+        <div class="dropdown">
+            <button class="dropbtn" id="dropdownButton">Everything <span class="arrow">&#9660;</span></button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" onclick="setCategory('Everything')">Everything</a>
+                <a href="#" onclick="setCategory('Software development')">Software development</a>
+                <a href="#" onclick="setCategory('Web development')">Web development</a>
+                <a href="#" onclick="setCategory('Data Analyst')">Data Analyst</a>
+                <a href="#" onclick="setCategory('IT Consultant')">IT Consultant</a>
+                <a href="#" onclick="setCategory('Network administrator')">Network administrator</a>
+            </div>
+        </div>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search Anything">
+        <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i> 
+          </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menu
+        document.getElementById('dropdownButton').addEventListener('click', function(event) {
+            event.stopPropagation();
+            document.getElementById('dropdownMenu').classList.toggle('show');
+            toggleArrowDirection();
+        });
+
+        // Set category and collapse the dropdown
+        function setCategory(category) {
+            if(category === 'Everything'){
+                document.getElementById('searchInput').placeholder = 'Search Anything';
+            } else {
+                document.getElementById('searchInput').placeholder = `Search in ${category}...`;
+            }
+                document.querySelector('.dropbtn').innerHTML = category + ' <span class="arrow">&#9660;</span>';
+            
+            document.getElementById('dropdownMenu').classList.remove('show');
+            toggleArrowDirection();
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function() {
+            var dropdown = document.getElementById('dropdownMenu');
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                toggleArrowDirection();
+            }
+        });
+
+        // Toggle the direction of the arrow
+        function toggleArrowDirection() {
+            const arrow = document.querySelector('.dropbtn .arrow');
+            if (document.getElementById('dropdownMenu').classList.contains('show')) {
+                arrow.innerHTML = '&#9650;'; // Up arrow
+            } else {
+                arrow.innerHTML = '&#9660;'; // Down arrow
+            }
+        }
+    </script>
+</body>
+</html>
