@@ -41,12 +41,10 @@
             } else {
                 document.getElementById('searchInput').placeholder = `Search in ${category}...`;
             }
-                document.querySelector('.dropbtn').innerHTML = category + ' <span class="arrow">&#9660;</span>';
-            
+            document.querySelector('.dropbtn').innerHTML = category + ' <span class="arrow">&#9660;</span>';
             document.getElementById('dropdownMenu').classList.remove('show');
             toggleArrowDirection();
         }
-
         // Close dropdown when clicking outside
         window.addEventListener('click', function() {
             var dropdown = document.getElementById('dropdownMenu');
@@ -55,7 +53,6 @@
                 toggleArrowDirection();
             }
         });
-
         // Toggle the direction of the arrow
         function toggleArrowDirection() {
             const arrow = document.querySelector('.dropbtn .arrow');
